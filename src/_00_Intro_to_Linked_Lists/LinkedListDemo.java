@@ -24,14 +24,30 @@ public class LinkedListDemo {
          * 
          * 4. Save the head or tail reference into a Node Object and use
          * references to traverse through the list and perform an operation on
-         * every element then print the list to see if it worked.
+         * every element then print the list to see if it worked. JA
          * 
          * e.g. Multiply every element by something in a LinkedList containing
          * Integer nodes or make word upper case in a LinkedList containing
          * String nodes.
          * 
          */
-
+    	LinkedList<String> list = new LinkedList<String>();
+    	list.add("ONCE");
+    	list.add("UPON");
+    	list.add("A");
+    	list.add("TIME");
+    	list.print();
+    	Node<String> node = list.getHead();
+    	int length = list.size();
+    	System.out.println(list.size());
+    	for(int i = 0; i  < length; i++) {
+    		
+    		
+    		node.setValue(node.getValue().toLowerCase());
+    		node = node.getNext();
+    	}
+    	list.print();
+    	
     }
 
 }
