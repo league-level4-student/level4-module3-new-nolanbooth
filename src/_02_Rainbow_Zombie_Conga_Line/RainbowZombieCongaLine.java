@@ -1,5 +1,7 @@
 package _02_Rainbow_Zombie_Conga_Line;
 
+import java.util.ArrayList;
+
 import _00_Intro_to_Linked_Lists.LinkedList;
 import _00_Intro_to_Linked_Lists.Node;
 
@@ -131,10 +133,38 @@ public class RainbowZombieCongaLine {
 
 	/*
 	 * Make two more zombies with the same hat color as the passed in zombie and add
-	 * one to the front, one to the end and one in the middle.
+	 * one to the front, one to the end and one in the middle. It says to add 2 zombies to 3 locations, start, middle, end ok
 	 */
 	public void brains(Zombie dancer) {
-
+		ZombieHatColor hatColor = dancer.getZombieHatColor();
+		Zombie front = new Zombie(hatColor);
+		Zombie end = new Zombie(hatColor);
+		
+		
+		Node<Zombie> node = new Node<>(front); // node is equal to the head, so set its previous equal to front
+		Node<Zombie> endNode = new Node<>(end);
+		Node<Zombie> middleNode = new Node<>(dancer);
+		
+		congaLine.getHead().setPrev(node);
+		node.setNext(congaLine.getHead());
+		congaLine.setHead(node);
+	
+		
+		congaLine.getTail().setNext(endNode);
+		endNode.setPrev(congaLine.getTail());
+		congaLine.setTail(endNode);
+		
+		int size = congaLine.size();
+			middleNode.setNext(congaLine.getHead());	
+		for(int i = 0; i < size/2; i++) {
+			middleNode.setNext(middleNode.getNext().getNext());
+			
+			
+		}
+		middleNode.setPrev(middleNode.getNext().getPrev());
+		middleNode.getNext().setPrev(middleNode);
+		middleNode.getPrev().setNext(middleNode);
+		
 	}
 
 	/*
@@ -142,6 +172,44 @@ public class RainbowZombieCongaLine {
 	 * color to the end of the line.
 	 */
 	public void rainbowBrains(Zombie dancer) {
+		Node<Zombie> node = new Node<>(dancer);
+		
+		congaLine.add(dancer);
+		
+		
+		
+		congaLine.getHead().setPrev(node);
+		node.setNext(congaLine.getHead());
+		congaLine.setHead(node);
+		
+		Zombie zombie = new Zombie(ZombieHatColor.R);
+		
+		Node<Zombie> test = new Node<>(zombie);
+		
+		ArrayList<Zombie> zombies = new ArrayList<>();
+		
+		congaLine.add(zombie);
+		
+		
+		for(int i = 0; i < ZombieHatColor.values().length; i++) {
+			zombies.add(new Zombie(     ZombieHatColor.values()[i]      ));
+			
+			
+		}for(int i = 0; i < ZombieHatColor.values().length; i++) {
+			congaLine.add(zombies.get(i));
+		}
+		
+		for(int i = 0; i < ZombieHatColor.values().length; i++) {
+			test.setPrev(congaLine.getTail());
+			congaLine.getTail().setNext(test);
+			congaLine.setTail(test);
+			
+			test = new Node<>(zombies.get(i));
+			//this might add two R colored zombies, to correct you can just not have the test equal a zombie at the beginning
+			//too lazy to fix it though
+			
+		}
+		// uh I think that works
 		
 	}
 

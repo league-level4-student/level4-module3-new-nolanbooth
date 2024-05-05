@@ -34,6 +34,12 @@ public class BinaryTreeDemo {
 
     public static void main(String[] args) {
 
+    	BinaryTree<Integer> noah = new BinaryTree<>();
+    	
+    	for(int i = 0; i < 100; i++) {
+    		noah.insert(i);
+    	}
+    	noah.notifyAll();// I wonder what this does
     }
 
 }
