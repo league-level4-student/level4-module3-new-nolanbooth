@@ -36,10 +36,31 @@ public class BinaryTreeDemo {
 
     	BinaryTree<Integer> noah = new BinaryTree<>();
     	
-    	for(int i = 0; i < 100; i++) {
+    	for(int i = 5; i < 10; i++) {
     		noah.insert(i);
     	}
-    	noah.notifyAll();// I wonder what this does
+    	noah.insert(-4);
+    	noah.insert(-3);
+    	Node<Integer> root = noah.getRoot();
+    	noah.insert(-1);
+    	System.out.println(root.getRight());
+    	//noah.insert(6);
+//    	noah.search(5); //returns the node i believe
+//    	noah.delete(5);
+//    	noah.search(5);
+    	noah.printVertical();
+    	for(int i = 0; i < 3; i++) {
+    		root.setValue(root.getValue() + 1);
+    		if(root.getRight() == null && root.getLeft().equals(null)) {
+    			root = noah.getRoot();
+    			
+    		}
+    		//basically go to the right, and if the right doesn't exist, go to the left, and if that doesn't exist, go back one.
+    		//After this you basically just check if the thing has already been visited, and then yeah, keep going back and forwards
+    		//until you are finished. 
+    	}
+    	noah.printVertical();
+    	//noah.notifyAll();// I wonder what this does
     }
 
 }
