@@ -1,5 +1,7 @@
 package _04_Morse_Code;
 
+import javax.swing.JOptionPane;
+
 import _00_Intro_to_Linked_Lists.Node;
 import _03_Intro_to_Binary_Trees.BinaryTree;
 
@@ -65,10 +67,13 @@ public class MorseDecoder {
      * 
      */
     void decode() {
-        String morseCode = "-.-- --- ..- .- .-. . .- -- .- --.. .. -. --.";
-       _03_Intro_to_Binary_Trees.Node<MorseCode> current = mcTree.getRoot();
+        String morseCode = JOptionPane.showInputDialog("Enter morse code");
+        String noah = ""; 
+        
+        
+        _03_Intro_to_Binary_Trees.Node<MorseCode> current = mcTree.getRoot();
         if(current != null) {
-        	System.out.println("Current exists");
+        	//System.out.println("Current exists");
         }
        
        
@@ -89,12 +94,16 @@ public class MorseDecoder {
             	}
         	}
         	System.out.print(current.getValue());
+        	
+        	noah = noah + current.getValue();
+        	
         	current = mcTree.getRoot();
         	
         	
         	
         	
         }
+        JOptionPane.showMessageDialog(null, noah);
     }
 
 }
